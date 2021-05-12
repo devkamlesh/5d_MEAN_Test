@@ -1,0 +1,78 @@
+.drawer-container {
+    width: 100%;
+    height: calc(100vh - 127px);
+    background: transparent;
+}
+.drawer-sidenav-content {
+    height: calc(100vh - 127px);
+}
+.drawer-sidenav {
+    background-color: #efefef;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    font-family: Roboto, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    width: 16rem;
+    .panel {
+        background-color: #efefef;
+        box-shadow: none;
+        .txt-color {
+            color: #000 !important;
+        }
+    }
+    .p:hover {
+        background: #ccc;
+        cursor: pointer;
+    }
+}
+
+.active-link {
+    background-color: #ccc;
+    color: #000;
+}
+::ng-deep .mat-drawer-content {
+    height: auto !important;
+}
+::ng-deep .mat-expansion-panel-body {
+    padding: 0 !important;
+}
+.header-bg {
+    background-color: #121a21;
+    .marginer {
+        margin-left: 80px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .drawer-sidenav {
+        font-size: 12px;
+        width: 10rem;
+        .panel {
+            .txt-color {
+                font-size: 12px;
+                padding: 10px !important;
+            }
+        }
+    }
+    .drawer-container,
+    .drawer-sidenav-content {
+        height: calc(100vh - 86px);
+    }
+    .header-bg {
+        button,
+        h3,
+        label {
+            font-size: 12px;
+        }
+        img {
+            width: 40px;
+        }
+        .marginer {
+            margin-left: 20px;
+        }
+    }
+    ::ng-deep .mat-expansion-panel-header {
+        padding: 5px !important;
+    }
+}

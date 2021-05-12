@@ -1,0 +1,48 @@
+table {
+    width: 100%;
+}
+@media screen and (max-width: 767px) {
+    h2 {
+        font-size: 16px;
+    }
+    table {
+        td,
+        th,
+        tr {
+            ::ng-deep .mat-standard-chip {
+                font-size: 12px;
+            }
+            ::ng-deep .mat-icon-button {
+                width: 20px;
+            }
+            font-size: 12px;
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 300px) {
+    h2 {
+        font-size: 16px;
+    }
+    table {
+        overflow-x: scroll;
+        td,
+        th,
+        tr {
+            ::ng-deep .mat-standard-chip {
+                font-size: 10px;
+            }
+            ::ng-deep .mat-icon-button {
+                width: 20px;
+            }
+            font-size: 10px;
+            img {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+}

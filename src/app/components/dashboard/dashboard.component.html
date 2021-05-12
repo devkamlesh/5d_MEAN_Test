@@ -1,0 +1,71 @@
+<header class="pt-3 header-bg d-flex justify-content-between">
+    <div class="d-flex align-items-center marginer">
+        <div *ngIf="isLogin">
+            <button mat-icon-button  (click)="drawer.toggle()">
+                <span class="material-icons text-white">
+                    menu
+                </span>
+            </button>
+        </div>
+        <div class="w-100">
+            <img src="https://5d.solutions/img/logo_light.png" alt="logo" width="100">
+            <h3 class="fw-bold text-white">Solutions</h3>
+        </div>
+    </div>
+    <div class="d-flex align-items-center text-white mb-3 fs-5 mx-3" *ngIf="isLogin">
+        <label class="form-label m-0 me-2 ">Hello, {{user?.name | titlecase}}</label>
+        <button mat-mini-fab color="primary" (click)="logout()">
+            <span class="material-icons" matTooltip="Logout">
+                logout
+            </span>
+        </button>
+    </div>
+</header>
+
+<mat-drawer-container class="drawer-container" autosize>
+    <mat-drawer #drawer class="drawer-sidenav" mode="side" [opened]="isLogin">
+        <span *ngFor="let item of sideMenu">
+            <span *ngIf="item.children && item.children.length > 0">
+                <mat-accordion>
+                    <mat-expansion-panel class="panel">
+                        <mat-expansion-panel-header class="p-3 m-0 d-flex align-items-center p"
+                            [routerLink]="item.route" routerLinkActive="active-link"
+                            [routerLinkActiveOptions]="{exact: true}">
+                            <mat-panel-title class="txt-color">
+                                <span class="material-icons me-2">
+                                    {{item.icon}}
+                                </span>
+                                {{item.title}}
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <span *ngFor="let child of item.children">
+                            <mat-list-item [routerLink]="child.route" routerLinkActive="active-link"
+                                [routerLinkActiveOptions]="{exact: true}"
+                                class="p p-3 m-0 d-flex align-items-center txt-color px-5">
+                                <span class="material-icons me-2">
+                                    {{child.icon}}
+                                </span>
+                                {{child.title}}
+                            </mat-list-item>
+                        </span>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </span>
+            <span *ngIf="!item.children || item.children.length === 0">
+                <mat-list-item [routerLink]="item.route" routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{exact: true}" class="p p-3 m-0 d-flex align-items-center">
+                    <span class="material-icons me-2">
+                        {{item.icon}}
+                    </span>
+                    {{item.title}}
+                </mat-list-item>
+            </span>
+        </span>
+    </mat-drawer>
+
+    <div class="drawer-sidenav-content">
+        <router-outlet></router-outlet>
+        <ngx-spinner></ngx-spinner>
+    </div>
+
+</mat-drawer-container>

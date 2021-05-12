@@ -1,0 +1,121 @@
+<!-- <app-header></app-header> -->
+<div class="container">
+    <div class="signup-form mt-5 rounded">
+        <h1>Sign Up</h1>
+        <form (ngSubmit)="signup()" [formGroup]="signupForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center text-secondary">
+                        <span class="material-icons me-2 mb-2">
+                            person_outline
+                        </span> <label class="form-label">First Name</label>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Jhon" formControlName="first_name">
+                    <!-- Validation -->
+                    <div *ngIf="first_name.invalid && (first_name.dirty || first_name.touched)" class="text-danger p-0">
+                        <div *ngIf="first_name.errors.required" class="p-0 pt-1">
+                            Please enter first name.
+                        </div>
+                        <div *ngIf="first_name.errors.minlength" class="p-0 pt-1">
+                            first name must be greater than 3 characters.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center text-secondary">
+                        <span class="material-icons mb-2 me-2">
+                            person_outline
+                        </span> <label class="form-label">Last Name</label>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Deo" formControlName="last_name">
+                    <!-- Validation -->
+                    <div *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)" class="text-danger p-0">
+                        <div *ngIf="last_name.errors.required" class="p-0 pt-1">
+                            Please enter last name.
+                        </div>
+                        <div *ngIf="last_name.errors.minlength" class="p-0 pt-1">
+                            last name must be greater than 3 characters.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center text-secondary">
+                        <span class="material-icons me-2 mb-2">
+                            mail_outline
+                        </span> <label class="form-label">Email Id</label>
+                    </div>
+                    <input type="text" class="form-control" placeholder="jhondeo@hotmail.com" formControlName="email">
+                    <!-- Validation -->
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger p-0">
+                        <div *ngIf="email.errors.required" class="p-0 pt-1">
+                            Please enter email id.
+                        </div>
+                        <div *ngIf="email.errors.pattern" class="p-0 pt-1">
+                            Please enter valid email id.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center text-secondary">
+                        <span class="material-icons mb-2 me-2">
+                            smartphone
+                        </span> <label class="form-label">Mobile No.</label>
+                    </div>
+                    <input type="text" class="form-control" placeholder="8888888888" formControlName="contact">
+                    <!-- Validation -->
+                    <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="text-danger p-0">
+                        <div *ngIf="contact.errors.required" class="p-0 pt-1">
+                            Mobile no. is required.
+                        </div>
+                        <div *ngIf="contact.errors.pattern" class="p-0 pt-1">
+                            Please enter proper mobile no.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center text-secondary">
+                        <span class="material-icons me-2 mb-2">
+                            place
+                        </span> <label class="form-label">City</label>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Pune" formControlName="city">
+                    <!-- Validation -->
+                    <div *ngIf="city.invalid && (city.dirty || city.touched)" class="text-danger p-0">
+                        <div *ngIf="city.errors.required" class="p-0 pt-1">
+                            City is required.
+                        </div>
+                        <div *ngIf="city.errors.minlength" class="p-0 pt-1">
+                            City name must be greater than 3 characters.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center text-secondary">
+                        <span class="material-icons mb-2 me-2">
+                            lock
+                        </span> <label class="form-label">Password</label>
+                    </div>
+                    <input type="password" class="form-control" placeholder="********" formControlName="password">
+                    <!-- Validation -->
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger p-0">
+                        <div *ngIf="password.errors.required" class="p-0 pt-1">
+                            Password is required.
+                        </div>
+                        <div *ngIf="password.errors.pattern" class="p-0 pt-1">
+                            Password must content at least 8 characters in length ,1 Lowercase letters ,1 Uppercase
+                            letters ,1 Numbers and 1 Special characters.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <button mat-raised-button type="submit" class="btn-secondary me-2">Register</button>
+                <label>Already a member? <a class="text-primary" routerLink="/signin">Sign in</a></label>
+            </div>
+        </form>
+    </div>
+</div>

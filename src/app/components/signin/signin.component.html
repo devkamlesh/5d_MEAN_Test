@@ -1,0 +1,43 @@
+<!-- <app-header></app-header> -->
+<div class="container">
+    <div class="signup-form mt-5 rounded">
+        <h1>Sign In</h1>
+        <form (ngSubmit)="signin()" [formGroup]="signinForm">
+            <div class="mt-3">
+                <div class="d-flex align-items-center text-secondary">
+                    <span class="material-icons me-2 mb-2">
+                        mail_outline
+                    </span> <label class="form-label">Email Id</label>
+                </div>
+                <input type="text" class="form-control" placeholder="jhondeo@hotmail.com" formControlName="email">
+                <!-- Validation -->
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger p-0">
+                    <div *ngIf="email.errors.required" class="p-0 pt-1">
+                        Please enter email id.
+                    </div>
+                    <div *ngIf="email.errors.pattern" class="p-0 pt-1">
+                        Please enter valid email id.
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <div class="d-flex align-items-center text-secondary">
+                    <span class="material-icons me-2 mb-2">
+                        lock
+                    </span> <label class="form-label">Password</label>
+                </div>
+                <input type="password" class="form-control" placeholder="*********" formControlName="password">
+                <!-- Validation -->
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger p-0">
+                    <div *ngIf="password.errors.required" class="p-0 pt-1">
+                        Please enter password.
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <button mat-raised-button type="submit" class="btn-secondary me-2">Login</button>
+                <label>Not a member? <a class="text-primary" routerLink="/signup">Sign up</a></label>
+            </div>
+        </form>
+    </div>
+</div>

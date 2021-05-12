@@ -1,0 +1,38 @@
+.signup-form {
+    background-color: #fafafa;
+    width: 60%;
+    margin: auto;
+    padding: 30px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+@media screen and (max-width: 1200px) {
+    .signup-form {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: 20px;
+    }
+    .signup-form {
+        width: 90%;
+        button,
+        input,
+        label {
+            font-size: 12px;
+        }
+    }
+}
+@media screen and (max-width: 300px) {
+    h1 {
+        font-size: 16px;
+    }
+    .signup-form {
+        width: 90%;
+        button,
+        input,
+        label {
+            font-size: 10px;
+        }
+    }
+}

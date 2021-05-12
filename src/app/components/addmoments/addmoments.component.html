@@ -1,0 +1,104 @@
+<div class="container">
+    <h2 class="fw-bold mt-3"><span *ngIf="!momentId">Add new</span><span *ngIf="momentId">Edit</span> moment</h2>
+    <div class="commonFormStyle my-3 rounded">
+        <form (ngSubmit)="moment()" [formGroup]="momentForm">
+
+            <div class="mt-2">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" placeholder="Title" formControlName="title">
+                <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger p-0">
+                    <div *ngIf="title.errors.required" class="p-0 pt-1">
+                        Please enter title.
+                    </div>
+                    <div *ngIf="title.errors.minlength" class="p-0 pt-1">
+                        Title must be more than 3 characters.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <label class="form-label">Tags</label>
+                <mat-chip-list #chipList>
+                    <input placeholder="tags" [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add($event)" class="custom-file w-100 rounded" formControlName="tags">
+                    <mat-chip *ngFor="let tag of tagsArray" [selectable]="selectable" [removable]="removable"
+                        (removed)="remove(tag)">
+                        {{tag}}
+                        <span class="material-icons" matChipRemove *ngIf="removable">
+                            close
+                        </span>
+                    </mat-chip>
+                </mat-chip-list>
+                <div *ngIf="tags.invalid && (tags.dirty || tags.touched)" class="text-danger p-0">
+                    <div *ngIf="tags.errors.required" class="p-0 pt-1">
+                        Please enter tags.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label">Image</label>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div>
+                                    <input type="file" id="moImages" accept="image/*" class="d-none"
+                                        (change)="onFileChange($event)">
+                                    <label class="w-100 rounded custom-file d-flex align-items-center" for="moImages">
+                                        <span *ngIf="momentImage">
+                                            <span>{{momentImage?.name}} </span>
+                                        </span>
+                                        <span *ngIf="!momentImage" class="text-secondary">
+                                            Browse Image
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button mat-raised-button class="btn-block btn-secondary" (click)="onUpload()"
+                                    type="button">Upload</button>
+                            </div>
+                        </div>
+                        <div *ngIf="imagePath.invalid && (imagePath.dirty || imagePath.touched)"
+                            class="text-danger p-0">
+                            <div *ngIf="imagePath.errors.required" class="p-0 pt-1">
+                                Please upload image.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="selectMomentImg">
+                        <label class="form-label">Uploaded image</label>
+                        <div class="text-center">
+                            <img src="{{baseImagePath}}{{selectMomentImg}}" width="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <label class="form-label">Comment</label>
+                <textarea type="text" class="form-control" placeholder="Comment" rows="3"
+                    formControlName="comment"></textarea>
+                <div *ngIf="comment.invalid && (comment.dirty || comment.touched)" class="text-danger p-0">
+                    <div *ngIf="comment.errors.required" class="p-0 pt-1">
+                        Please enter comment.
+                    </div>
+                    <div *ngIf="comment.errors.minlength" class="p-0 pt-1">
+                        Comment must be more than 3 characters.
+                    </div>
+                    <div *ngIf="comment.errors.maxlength" class="p-0 pt-1">
+                        Comment must be less than 100 characters.
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <button mat-raised-button type="submit" class="btn-secondary" *ngIf="!momentId">Add Moment</button>
+                <button mat-raised-button type="button" class="btn-secondary" *ngIf="momentId"
+                    (click)="editMoment()">Edit Moment</button>
+            </div>
+        </form>
+    </div>
+</div>

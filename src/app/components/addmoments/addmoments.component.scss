@@ -1,0 +1,28 @@
+.commonFormStyle {
+    background: #fafafa;
+    width: 80%;
+    margin: auto;
+    padding: 15px 30px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+.custom-file {
+    height: 36px;
+    padding-left: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: #fff;
+}
+
+@media screen and (max-width: 767px) {
+    .commonFormStyle {
+        width: 90%;
+        h1 {
+            font-size: 16px;
+        }
+        button,
+        textarea,
+        input,
+        label {
+            font-size: 12px;
+        }
+    }
+}
